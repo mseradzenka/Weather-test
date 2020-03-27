@@ -1,0 +1,21 @@
+<div class="info-wrapper" [ngClass]="!weatherData ? 'loading' : ''">
+    <div *ngIf="!weatherData" class="loading-info">Weather info is loading, please wait...</div>
+    <ng-container *ngIf="weatherData">
+        <div class="info">
+            <div class="current-data">
+                Currenly in {{ weatherData.city }}, {{ weatherData.country }} it's {{ weatherData.temp }} ºC, humidity is about {{ weatherData.humidity }} %
+            </div>
+            <button
+                class="stop"
+                [ngClass]="isStopped ? 'stopped' : ''"
+                (click)="stopOrResumeListening()">
+                    {{ isStopped ? 'Resume data tracking' : 'Stop data tracking' }}
+            </button>
+        </div>
+    </ng-container>
+</div>
+
+<div class="chart-wrapper">
+    <app-temp-chart></app-temp-chart>
+    <app-humidity-chart></app-humidity-chart>
+</div>

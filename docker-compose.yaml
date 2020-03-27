@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  nest-weather-test:
+    build: ./nest-weather-test
+    ports:
+      - 3000:3000
+
+  angular-weather-test:
+    build: ./angular-weather-test
+    ports:
+      - 80:80
+    depends_on:
+      - nest-weather-test
